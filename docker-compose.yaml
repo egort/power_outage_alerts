@@ -1,0 +1,14 @@
+
+
+services:
+  outage-parser:
+    build: .  # Строит образ из текущей директории (где Dockerfile)
+    image: outage-parser:latest
+    container_name: outage-parser-container
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}  # Переменные из .env или командной строки
+      - CHAT_ID=${CHAT_ID}
+    restart: unless-stopped  # Автоматический рестарт, если контейнер упадёт
+    volumes:
+      - .:/app  # Опционально: монтирует текущую директорию для удобства разработки (изменения в parser.py применятся без rebuild)
+
