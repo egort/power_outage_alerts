@@ -1,5 +1,3 @@
-
-
 services:
   outage-parser:
     build: .  # Строит образ из текущей директории (где Dockerfile)
